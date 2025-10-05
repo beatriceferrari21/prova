@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ti amo Beina</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .message {
+            color: white;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .message h1 {
+            font-size: 48px;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.5;
+        }
+
+        .heart-container {
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .heart {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            transform: rotate(-45deg);
+            animation: pulse 1.5s ease infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 480px;
+            background: linear-gradient(to bottom, #ff6b9d, #c06c84);
+            border-radius: 300px 300px 0 0;
+            box-shadow: 0 20px 60px rgba(255, 107, 157, 0.4);
+        }
+
+        .heart::before {
+            left: 150px;
+        }
+
+        .heart::after {
+            top: -150px;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: rotate(-45deg) scale(1);
+            }
+            50% {
+                transform: rotate(-45deg) scale(1.05);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+            box-shadow: 0 0 10px white;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sparkles" id="sparkles"></div>
+    
+    <div class="message">
+        <h1>❤️ Ti amo e mi manchi tanto Beina, non vedo l'ora di vederti ❤️</h1>
+    </div>
+
+    <script>
+        const sparklesContainer = document.getElementById('sparkles');
+        
+        for (let i = 0; i < 50; i++) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            sparklesContainer.appendChild(sparkle);
+        }
+    </script>
+</body>
+</html>
